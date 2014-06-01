@@ -3,7 +3,7 @@ h1 {text-align:center; margin-top:10px;}
 h1 i {float:right;}
 p{margin:1em;}
 h1#question {background:#7087A4;border-bottom:1px solid #1D68B9;text-align:left; color:#fff;padding:15px;margin-bottom:0;}
-
+.item.item-divider { background:#7087A4; color:#fff}
 .bar.bar-stable{
 background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
