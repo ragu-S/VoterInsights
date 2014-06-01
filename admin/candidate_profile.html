@@ -14,7 +14,7 @@
 		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/ico/apple-touch-icon-57-precomposed.png">
 		<link rel="shortcut icon" href="assets/ico/favicon.png">
 
-	    <title>VoteInsight</title>
+	    <title>Voter Insight</title>
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -62,7 +62,6 @@
 				<a class="navbar-brand" href="index.html"><img src="assets/img/admin_logo.png"></a>
 	        </div>
 			<ul class="nav navbar-nav navbar-actions navbar-left">
-				<li><a href="index.html#" id="main-menu-toggle"><i class="fa fa-bars"></i></a></li>
 			</ul>
 	        <ul class="nav navbar-nav navbar-right">
 				 <!-- <li class="dropdown">
@@ -151,10 +150,6 @@
 	      		</li>
 				<!-- <li><a href="index.html#"><i class="fa fa-bars"></i></a></li> -->
 			</ul>
-			<form class="navbar-form navbar-left">
-				<i class="fa fa-search"></i>
-				<input type="text" class="form-control" placeholder="Search...">
-			</form>
 		</div>
 	</div>
 	<!-- end: Header -->
@@ -167,12 +162,10 @@
 								
 				<div class="sidebar-collapse collapse">
 					
-					<div class="nav-sidebar title"><span>Main Menu</span></div>
-					
 					<ul class="nav nav-sidebar">
 						
 						<li><a href="candidate_dashboard.html"><i class="fa fa-bar-chart-o"></i><span class="hidden-sm text"> Dashboard</span></a></li>	
-						<li><a href="candidate_profile.html"><i class="fa fa-bar-chart-o"></i><span class="hidden-sm text"> Bio</span></a></li>
+						<li><a href="candidate_profile.html"><i class="fa fa-male"></i><span class="hidden-sm text"> Bio</span></a></li>
 						<!-- <li>
 							<a class="dropmenu" href="index.html#"><i class="fa fa-eye"></i><span class="hidden-sm text"> UI Features</span> <span class="chevron closed"></span></a>
 							<ul>
@@ -287,7 +280,7 @@
 						</li>
 					</ul> -->
 				</div>
-									<a href="index.html#" id="main-menu-min" class="full visible-md visible-lg"><i class="fa fa-angle-double-left"></i></a>
+									<a href="#" id="main-menu-min" class="full visible-md visible-lg"><i class="fa fa-angle-double-left"></i></a>
 							</div>
 			<!-- end: Main Menu -->
 						
@@ -309,13 +302,9 @@
 							<!-- <hr> -->
 							
 							<div class="row text-center">
-								<div class="col-xs-4">
+								<div class="col">
 									<div><strong>89.876</strong></div>
 									<div><small>Followers</small></div> 
-								</div><!--/.col-->
-								<div class="col-xs-4">
-									<div><strong>1.983</strong></div>
-									<div><small>Posts</small></div>
 								</div><!--/.col-->
 							</div><!--/.row--> 
 							<hr>
@@ -377,24 +366,23 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<ul class="nav nav-tabs pull-left" id="tabs">
-							  	<li><a href="page-profile.html#activity" id="showTab">Activity</a></li>
-							  	<li><a href="page-profile.html#week">week</a></li>
+							  	<li><a href="page-profile.html#tweets" id="showTab">Tweets</a></li>
+							  	<li><a href="page-profile.html#accomplishments">Accomplishments</a></li>
 							</ul>
 						</div>
 						<div class="panel-body">
 							<div class="tab-content">
-							  	<div class="tab-pane" id="activity">
+							  	<div class="tab-pane" id="tweets">
 							  		<div class="twitter">
 									<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/TOMayorFord" data-widget-id="472925083019649024">Tweets by @TOMayorFord</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>	
 									</div>
 							  	</div>
-							  	<div class="tab-pane" id="week">
+							  	<div class="tab-pane" id="accomplishments">
 									<div class="col-sm-9">
 					
 					<ul class="nav nav-tabs" id="myTab">
 					  	<li class="active"><a href="page-profile.html#skills">Skills</a></li>
-					  	<li><a href="page-profile.html#friends">Friends</a></li>
 					  	<li><a href="page-profile.html#photos">Photos</a></li>
 					</ul>
 
@@ -457,83 +445,6 @@
 							</div><!--/row-->		
 							
 						</div>
-					  	<div class="tab-pane" id="friends">
-							<ul class="friends-list clearfix">
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar.jpg"></a>
-									<div>Lukasz Holeczek</div>
-									<span class="label label-success">active</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar2.jpg"></a>
-									<div>Ann Polansky</div>
-									<span class="label label-warning">busy</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar3.jpg"></a>
-									<div>May Lin</div>
-									<span class="label label-danger">blocked</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar4.jpg"></a>
-									<div>Kate Norman</div>
-									<span class="label label-default">offline</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar5.jpg"></a>
-									<div>Mia Lopez</div>
-									<span class="label label-danger">blocked</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar6.jpg"></a>
-									<div>Katia Svoboda</div>
-									<span class="label label-success">active</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar7.jpg"></a>
-									<div>Blanka Rosicky</div>
-									<span class="label label-warning">busy</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar8.jpg"></a>
-									<div>Garry Old</div>
-									<span class="label label-success">active</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-								<li>
-									<a class="avatar" href="page-profile.html#"><img src="assets/img/avatar9.jpg"></a>
-									<div>Nick White</div>
-									<span class="label label-success">active</span>
-									<a href="page-profile.html#" class="fa fa-facebook-square"></a>
-									<a href="page-profile.html#" class="fa fa-twitter-square"></a>
-									<a href="page-profile.html#" class="fa fa-linkedin-square"></a>
-								</li>
-							</ul>	
-						
-					  	</div>
 					  	<div class="tab-pane" id="photos">
 					  		
 							<div class="row">
@@ -580,9 +491,6 @@
 					
 					  	</div>
 					</div>
-							  	</div>
-							  	<div class="tab-pane active" id="month">
-							  		
 							  	</div>
 							</div>
 						</div>
@@ -637,11 +545,11 @@
 		<div class="row">
 			
 			<div class="col-sm-5">
-				&copy; 2014 creativeLabs. <a href="http://bootstrapmaster.com">Admin Templates</a> by BootstrapMaster
+				&copy; 2014 Voter Insight
 			</div><!--/.col-->
 			
 			<div class="col-sm-7 text-right">
-				Powered by: <a href="http://bootstrapmaster.com/demo/clever/" alt="Bootstrap Admin Templates">cleverAdmin</a> | Based on Bootstrap 3.1.1 | Built with brix.io <a href="http://brix.io" alt="Brix.io - Interface Builder">Interface Builder</a>
+				Powered by: Rob Ford's fans
 			</div><!--/.col-->	
 			
 		</div><!--/.row-->	

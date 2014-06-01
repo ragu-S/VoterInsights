@@ -14,7 +14,7 @@
 		<link rel="apple-touch-icon-precomposed" sizes="57x57" href="assets/ico/apple-touch-icon-57-precomposed.png">
 		<link rel="shortcut icon" href="assets/ico/favicon.png">
 
-	    <title>VoteInsight</title>
+	    <title>Voter Insight</title>
 
 	    <!-- Bootstrap core CSS -->
 	    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -31,6 +31,8 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	    <![endif]-->
+
+
 	</head>
 
 		 <style>
@@ -46,6 +48,10 @@
 					visibility: hidden;
 				}
 				.navbar .navbar-nav li a{
+					visibility: hidden;
+				}
+				.navbar .navbar-toggle{
+					display: none;
 					visibility: hidden;
 				}
 	
@@ -155,10 +161,6 @@
 	      		</li> 
 				<!-- <li><a href="index.html#"><i class="fa fa-bars"></i></a></li> -->
 			</ul>
-			<form class="navbar-form navbar-left">
-				<i class="fa fa-search"></i>
-				<input type="text" class="form-control" placeholder="Search...">
-			</form>
 		</div>
 	</div>
 	<!-- end: Header -->
@@ -312,31 +314,33 @@
 						</div>
 						<div class="panel-body">
 							
-							<div class="row">
+							<a href="" id="kate_seller"> <div class="row">
 																<div style="margin-bottom:30px" class="col-sm-2 col-xs-6">
-									<img class="img-thumbnail" src="assets/img/gallery/photo1.jpg" alt="Sample Image">
-									<h2 class="text-center"><strong>Karen Boyle</strong></h2>
-							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Los Angeles, CA</small></h4>
-								</div>
+									<img class="img-thumbnail" src="assets/img/gallery/candidate_kate_seller.jpg" alt="Sample Image">
+									<h2 class="text-center"><strong>Kate Seller</strong></h2>
+							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Canada</small></h4>
+								</div> </a>
 
-																
+							<a href="" id="glen_murray">
 																<div style="margin-bottom:30px" class="col-sm-2 col-xs-6">
-									<img class="img-thumbnail" src="assets/img/gallery/photo2.jpg" alt="Sample Image">
-									<h2 class="text-center"><strong>Karen Boyle</strong></h2>
-							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Los Angeles, CA</small></h4>
-								</div>
+									<img class="img-thumbnail" src="assets/img/gallery/candidate_glen_murray.jpg" alt="Sample Image">
+									<h2 class="text-center"><strong>Glen Murray</strong></h2>
+							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Canada</small></h4>
+								</div></a>
 
+								<a href="" id="mark_daye">
 																<div style="margin-bottom:30px" class="col-sm-2 col-xs-6">
-									<img class="img-thumbnail" src="assets/img/gallery/photo3.jpg" alt="Sample Image">
-									<h2 class="text-center"><strong>Karen Boyle</strong></h2>
-							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Los Angeles, CA</small></h4>
-								</div>
+									<img class="img-thumbnail" src="assets/img/gallery/candidate_mark_daye.jpg" alt="Sample Image">
+									<h2 class="text-center"><strong>Mark Daye</strong></h2>
+							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Canada</small></h4>
+								</div></a>
 
+								<a href="" id="martin_abell">
 																<div style="margin-bottom:30px" class="col-sm-2 col-xs-6">
-									<img class="img-thumbnail" src="assets/img/gallery/photo4.jpg" alt="Sample Image">
-									<h2 class="text-center"><strong>Karen Boyle</strong></h2>
-							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Los Angeles, CA</small></h4>
-								</div>
+									<img class="img-thumbnail" src="assets/img/gallery/candidate_martin_abell.jpg" alt="Sample Image">
+									<h2 class="text-center"><strong>Martin Abell</strong></h2>
+							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Canada</small></h4>
+								</div></a>
 
 																<div style="margin-bottom:30px" class="col-sm-2 col-xs-6">
 									<img class="img-thumbnail" src="assets/img/gallery/photo5.jpg" alt="Sample Image">
@@ -380,12 +384,13 @@
 							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Los Angeles, CA</small></h4>
 								</div>
 
+								<a href="candidate_dashboard.html" id="rod_ford">
 																<div style="margin-bottom:30px" class="col-sm-2 col-xs-6">
 									<img class="img-thumbnail" src="assets/img/gallery/robford5.jpg" alt="Sample Image">
 									<h2 class="text-center"><strong>Rob Ford</strong></h2>
 							<h4 class="text-center"><small><i class="fa fa-map-marker"></i> Toronto, ON</small></h4>
 								</div>
-															</div>
+															</div></a>
 						</div>	
 					</div><!--/col-->
 				</div><!--/col-->
@@ -426,12 +431,11 @@
 		<div class="row">
 			
 			<div class="col-sm-5">
-				&copy; 2014 creativeLabs. <a href="http://bootstrapmaster.com">Admin Templates</a> by BootstrapMaster
+				&copy; 2014 Voter Insight
 			</div><!--/.col-->
 			
 			<div class="col-sm-7 text-right">
-				Powered by: <a href="http://bootstrapmaster.com/demo/clever/" alt="Bootstrap Admin Templates">cleverAdmin</a> | Based on Bootstrap 3.1.1 | Built with brix.io <a href="http://brix.io" alt="Brix.io - Interface Builder">Interface Builder</a>
-			</div><!--/.col-->	
+				Powered by: Rob Ford's fans
 			
 		</div><!--/.row-->	
 
