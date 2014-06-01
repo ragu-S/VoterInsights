@@ -1,8 +1,33 @@
-<ion-view title="Playlists">
+<ion-view title="CandidateFinder">
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
   <ion-content class="has-header">
+  <div class="list">
+	  <a class="item item-icon-left" href="#">
+		<i class="icon ion-document-text"></i>
+		Candidate Listing
+	  </a>
+	  <a class="item item-icon-left" href="#">
+		<i class="icon ion-ios7-search-strong"></i>
+		Match Finder
+	  </a>
+	 <a class="item item-icon-left" href="#">
+		<i class="icon ion-mic-a"></i>
+		Who said that?
+	  </a>
+
+	  <!--<a class="item item-icon-left" href="#">
+		<i class="icon ion-person-stalker"></i>
+		Ward #91 Statistics
+		<span class="badge badge-assertive">3</span>
+	  </a>-->
+	<div class="item item-divider">Latest Election News</div> <!-- dump open RSS feeds here-->
+	  <a class="item" href="#">BattleHack contenders fight for equal rights</a>	
+	  <a class="item" href="#">Rob Ford on rampage in downtown</a>	
+	  <a class="item" href="#">Rob Ford eats entire taco stand</a>	
+	  <a class="item" href="#">Nelson Mandela not participating in MPP Election</a>	
+	</div>
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
         {{playlist.title}}
