@@ -1,3 +1,7 @@
 /* Empty. Add your own CSS if you like */
 h1 {text-align:center; margin-top:10px;}
+h1 i {float:right;}
 p{margin:1em;}
+h1#question {background:#7087A4;text-align:left; color:#fff;padding:15px}
+.col .item-radio {font-size:20px}
+.col .item-radio .item-content {padding-right:0}
