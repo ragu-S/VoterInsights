@@ -41,7 +41,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
             })
 
             .state('app.candidate', {
-                url: "/candidate",
+                url: "/candidate/:candidateId",
                 views: {
                     'menuContent' :{
                         templateUrl: "templates/candidate.html",
@@ -49,22 +49,41 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     }
                 }
             })
-            .state('app.playlists', {
-                url: "/playlists",
+            .state('app.candidateList', {
+                url: "/candidateList",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/playlists.html",
-                        controller: 'PlaylistsCtrl'
+                        templateUrl: "templates/candidateList.html",
+                        controller: 'CandidateListCtrl'
+                    }
+                }
+            })
+            .state('app.mainmenu', {
+                url: "/mainmenu",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/mainmenu.html",
+                        controller: 'MainMenuCtrl'
+                    }
+                }
+            })
+
+            .state('app.demographics', {
+                url: "/demographics",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/demographics.html",
+                        controller: 'DemographicsCtrl'
                     }
                 }
             })
 
             .state('app.single', {
-                url: "/playlists/:playlistId",
+                url: "/postalcode",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/playlist.html",
-                        controller: 'PlaylistCtrl'
+                        templateUrl: "templates/postalcode.html",
+                        controller: 'PostalCodeCtrl'
                     }
                 }
             });

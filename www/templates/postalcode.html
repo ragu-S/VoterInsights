@@ -1,13 +1,13 @@
-<ion-view title="Postal Code">
+<ion-view title="Match Finder">
   <ion-content class="has-header">
     <h1>Postal Code</h1>
 	<p>Providing your postal code is necessary, as it allows us to provide you with information specific to your region.</p>
 	<div class="list">
 	  <div class="item item-input-inset">
 		<label class="item-input-wrapper">
-		  <input type="text" placeholder="Postal Code">
+		  <input ng-model="pcode" type="text" placeholder="Postal Code">
 		</label>
-		<button class="button icon-right ion-chevron-right button-small button-positive">
+		<button class="button icon-right ion-chevron-right button-small button-positive" ng-click="sendPostal(pcode)">
 		  Next
 		</button>
 	  </div>

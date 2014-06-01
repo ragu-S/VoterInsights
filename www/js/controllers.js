@@ -36,11 +36,75 @@ angular.module('starter.controllers', [])
 
     .controller('PlaylistCtrl', function($scope, $stateParams) {
     })
+    .controller('MainMenuCtrl', function($scope, $stateParams) {
+    })
+    .controller('PostalCodeCtrl', function($scope, $rootScope, $http) {
+
+        $scope.sendPostal = function(pcode) {
+            console.log("ee", pcode);
+            $http({
+                url: '/testing.php',
+                method: "POST",
+                data: { 'pcode' : pcode }
+            })
+                .then(function(response) {
+                    // success
+                    console.log(response.data);
+                },
+                function(response) { // optional
+                    // failed
+                }
+            );
+        }
 
 
-    .controller('QuestionsCtrl', function($scope, $location){
+    })
+    .controller('CandidateListCtrl', function($scope, $location, $stateParams) {
+
+        Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
+        $scope.candidates = [];
+        var Candidate = Parse.Object.extend("Candidates");
+//        console.log(Candidate);
+        var canQuery = new Parse.Query(Candidate);
+        var candidate;
+        canQuery.select("party_url", "photo_url", "Name");
+        canQuery.find({
+            success: function(candidate){
+                $scope.candidates = candidate;
+                console.log($scope.candidates);
+
+
+                $scope.$apply();
+
+
+            },
+            error: function(){
+
+            }
+        });
+
+
+
+
+
+    })
+
+    .controller('QuestionsCtrl', function($scope, $location, $rootScope){
         $scope.answers = [];
         Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
+//$scope.relnumber;
+
+        var Relevance = Parse.Object.extend("relevance");
+        var relevance = new Parse.Query(Relevance);
+        relevance.find({
+            success:function(results){
+                $scope.relevances = results;
+                console.log($scope.relevances);
+            }
+
+        });
+
+
 
         var Questions = Parse.Object.extend("Questions");
         var query = new Parse.Query(Questions);
@@ -49,6 +113,7 @@ angular.module('starter.controllers', [])
         query.find({
             success:function(results){
                 $scope.questions = results[0].attributes.question_txt;
+                $scope.question_id = results[0].id;
                 console.log($scope.questions);
                 $scope.$apply();
                 var currentId;
@@ -60,7 +125,7 @@ angular.module('starter.controllers', [])
                     queryAnswers.equalTo("objectId", currentId);
                     queryAnswers.find({
                         success:function(answer){
-                            $scope.answers.push(answer[0].attributes.answer_txt);
+                            $scope.answers.push({id: currentId, text: answer[0].attributes.answer_txt});
                             $scope.$apply();
 
                             console.log("answers", answer);
@@ -75,57 +140,108 @@ angular.module('starter.controllers', [])
             }
         });
 
+        $scope.setRel = function(abc){
+            $scope.relnumber=abc.toString();
+//            $scope.$apply();
+
+        };
+        $scope.setAnswer = function(abc){
+            $scope.answerId=abc;
+
+        };
         $scope.registerAnswer = function(){
 //        $location.path('/app/candidate');
-
+//            $scope.$apply();
             counter++;
-            console.log(counter, "counter");
-//        $scope.answers = [];
-//        $scope.$apply();
-            var Questions = Parse.Object.extend("Questions");
-            var query = new Parse.Query(Questions);
-//        var counter = 0;
-            query.skip(counter);
-            query.limit(1);
-            query.find({
+            console.log(counter, "counter", $scope.relnumber);
+
+
+            var userId = $rootScope.id;
+
+            var Voters = Parse.Object.extend("Voters");
+            var Responses = Parse.Object.extend("Responses");
+
+            var response = new Responses();
+            console.log($scope.question_id, $scope.answerId, $scope.relnumber);
+
+            response.set({
+                question_id: $scope.question_id,
+                answer_id: $scope.answerId,
+                relevance: $scope.relnumber
+            });
+
+            var currentVoter = new Voters();
+            currentVoter.id = userId;
+
+            response.set("parent", currentVoter);
+
+            response.save(null,{
                 success:function(results){
-                    if(results.length > 0){
-                        $scope.questions = results[0].attributes.question_txt;
-                        console.log($scope.questions);
-//                $scope.$apply();
-                        var currentId;
-                        $scope.answers = [];
 
-                        for(var i = 0; i < results[0].attributes.answer_ids.length; i++){
-                            currentId = results[0].attributes.answer_ids[i];
-                            console.log(currentId);
-                            var Answers = Parse.Object.extend("Answers");
-                            var queryAnswers = new Parse.Query(Answers);
-                            queryAnswers.equalTo("objectId", currentId);
-                            queryAnswers.find({
-                                success:function(answer){
-                                    $scope.answers.push(answer[0].attributes.answer_txt);
-                                    $scope.$apply();
-
-                                    console.log("answers", answer);
-                                }
-                            });
-
-
+                    var Relevance = Parse.Object.extend("relevance");
+                    var relevance = new Parse.Query(Relevance);
+                    relevance.find({
+                        success:function(results){
+                            $scope.relevances = results;
+                            console.log($scope.relevances);
                         }
 
-
-                        console.log(results);
-                    } else {
-                        console.log("hehehe");
-                    }
+                    });
 
 
-                },
-                error:function(errors){
-                    console.log(errors);
+                    var Questions = Parse.Object.extend("Questions");
+                    var query = new Parse.Query(Questions);
+//        var counter = 0;
+
+                    query.skip(counter);
+                    query.limit(1);
+                    query.find({
+                        success:function(results){
+                            if(results.length > 0){
+                                $scope.questions = results[0].attributes.question_txt;
+                                $scope.question_id = results[0].id;
+
+                                console.log($scope.questions);
+//                $scope.$apply();
+                                var currentId;
+                                $scope.answers = [];
+
+                                for(var i = 0; i < results[0].attributes.answer_ids.length; i++){
+                                    currentId = results[0].attributes.answer_ids[i];
+                                    console.log(currentId);
+                                    var Answers = Parse.Object.extend("Answers");
+                                    var queryAnswers = new Parse.Query(Answers);
+                                    queryAnswers.equalTo("objectId", currentId);
+                                    queryAnswers.find({
+                                        success:function(answer){
+                                            $scope.answers.push({id: currentId, text: answer[0].attributes.answer_txt});
+                                            $scope.$apply();
+
+                                            console.log("answers", answer);
+                                        }
+                                    });
+
+
+                                }
+
+
+                                console.log(results);
+                            } else {
+                                console.log("hehehe");
+                            }
+
+
+                        },
+                        error:function(errors){
+                            console.log(errors);
+                        }
+                    });
+                    $scope.$apply();
                 }
+
             });
+//        $scope.answers = [];
+//        $scope.$apply();
 
 
 //        $scope.questions = "hi";
@@ -139,33 +255,48 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('DemographicsCtrl', function($scope){
-//// Declare the types.
-//        var Voters = Parse.Object.extend("Voters");
-//        var Responses = Parse.Object.extend("Responses");
-//
-//// Create the post
-//
-//
-//// Create the comment
-//        var response = new Responses();
-////        myComment.set("content", "Let's do Sushirrito.");
-//
-//// Add the post as a value in the comment
-//        response.set("parent", myPost);
-//
-//// This will save both myPost and myComment
-//        myComment.save();
+    .controller('DemographicsCtrl', function($scope, $rootScope, $location){
+        Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
+
+        var Voters = Parse.Object.extend("Voters");
+        var Responses = Parse.Object.extend("Responses");
+
+        var voter = new Voters();
+        voter.set("postal_code", "L2B3V3");
+        voter.set("data_age", 31222);
+
+
+        var response = new Responses();
+        response.set("question_id", "rsPzi4C3en");
+        response.set("answer_id", "urz2Y2d924");
+        response.set("relevance", "322");
+        response.set("parent", voter);
+
+        response.save(null, {
+            success: function (results) {
+
+                //Store the id of the user
+                $rootScope.id = results.attributes.parent.id;
+                $rootScope.$apply(function(){
+                    $location.path('/app/question');
+                });
+
+            }
+        });
+
     })
 
-    .controller('CandidateCtrl', function($scope){
-//      var canId = $routeParams;
+    .controller('CandidateCtrl', function($scope, $location, $rootScope, $stateParams){
+        console.log($stateParams);
+        var canId = $stateParams.candidateId;
+        var serachObject = $location.search();
+        console.log(serachObject);
         Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
 
         var Candidate = Parse.Object.extend("Candidates");
 //        console.log(Candidate);
         var canQuery = new Parse.Query(Candidate);
-        canQuery.equalTo("objectId", "tA9Ho1CxBk");
+        canQuery.equalTo("objectId", canId);
         canQuery.find({
             success: function(candidate){
                 var canData = candidate[0].attributes;
@@ -173,6 +304,7 @@ angular.module('starter.controllers', [])
                     name: canData.Name,
                     email: canData.email,
                     party_url: canData.party_url,
+                    party_color: canData.party_color,
                     photo_url: canData.photo_url,
                     txt_About: canData.txt_About,
                     url_Donate: canData.url_Donate,

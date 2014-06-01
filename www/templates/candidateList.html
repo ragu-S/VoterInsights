@@ -1,10 +1,10 @@
 <ion-view title="Candidate Listing">
     <ion-content class="has-header">
-	<div class="list">
-		<a class="item item-thumbnail-left" href="#">
-		<img src="img/{{candidate.photo_url}}">
-		<h2>{{candidate.name}}</h2>
-		<img src="img/{{candidate.party_url}}" width=100 style="border-radius:10px;">
+	<div class="list" >
+		<a ng-repeat="candidate in candidates" class="item item-thumbnail-left" href="#/app/candidate/{{candidate.id}}">
+		<img src="img/{{candidate.attributes.photo_url}}">
+		<h2>{{candidate.attributes.Name}}</h2>
+		<img src="img/{{candidate.attributes.party_url}}" width=100 style="border-radius:5px;">
 		</a>
 	</div>
     </ion-content>
