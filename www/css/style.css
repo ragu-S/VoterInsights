@@ -2,10 +2,15 @@
 h1 {text-align:center; margin-top:10px;}
 h1 i {float:right;}
 p{margin:1em;}
-h1#question {background:#7087A4;text-align:left; color:#fff;padding:15px}
-.col .item-radio {font-size:20px}
-.col .item-radio .item-content {padding-right:0}
+h1#question {background:#7087A4;border-bottom:1px solid #1D68B9;text-align:left; color:#fff;padding:15px;margin-bottom:0;}
 
+.bar.bar-stable{
+background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(47%,#f6f6f6), color-stop(100%,#ededed)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* IE10+ */
+}
 a.item::after{
 -webkit-font-smoothing: antialiased;
 font-smoothing: antialiased;
