@@ -37,11 +37,6 @@
         }
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-         marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: 'Hello World!'
-        });
 
         Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
 
@@ -54,15 +49,15 @@
                     voter = voters[i];
 
                     if(voter.attributes.postal_code){
-                        console.log("hi")
                         $.get("https://maps.googleapis.com/maps/api/geocode/json?address="+voter.attributes.postal_code+"&sensor=false", function(data){
                             console.log(data);
                             console.log("fuk yea", data.results[0].geometry.location);
                              marker = new google.maps.Marker({
                                 position: data.results[0].geometry.location,
                                 map: map,
-                                title: 'Hello World!'
-                            });
+                                title: 'Hello World!',
+                                 icon: voter.attributes.icon
+                        });
                         });
                     }
 

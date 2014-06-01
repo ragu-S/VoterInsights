@@ -305,6 +305,7 @@ angular.module('starter.controllers', [])
             var userId = $rootScope.id;
             voter.id = userId;
             voter.set({
+                icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|'+Math.floor(Math.random()*16777215).toString(16),
                 data_gender: voterData.data_gender,
                 data_age: voterData.data_age,
                 data_education: voterData.data_education,
