@@ -7,7 +7,7 @@
 		<div class="input-label">
 		  What is your gender?
 		</div>
-		<select>
+		<select ng-model="voter.data_gender">
 		  <option>Male</option>
 		  <option>Female</option>
 		</select>
@@ -16,7 +16,7 @@
 		<div class="input-label">
 		  What is your age?
 		</div>
-		<select>
+		<select ng-model="voter.data_age">
 		  <option>18-29 years old</option>
 		  <option>30-49</option>
 		  <option>50-64</option>
@@ -27,7 +27,7 @@
 		<div class="input-label">
 		  Education
 		</div>
-		<select>
+		<select ng-model="voter.data_education">
 		  <option>some high school</option>
 		  <option>high school graduate</option>
 		  <option>some college</option>
@@ -41,7 +41,7 @@
 		<div class="input-label">
 		  Political view
 		</div>
-		<select>
+		<select ng-model="voter.data_politicalView">
 		  <option>very conservative</option>
 		  <option>conservative</option>
 		  <option>moderate</option>
@@ -50,7 +50,7 @@
 		</select>
 	  </label>
 </div>
-<button class="button icon-right ion-chevron-right button-full button-positive">
+<button class="button icon-right ion-chevron-right button-full button-positive" ng-click="sendVoterData(voter)">
 		  and your most likely candidate is...
 		</button>
   </ion-content>

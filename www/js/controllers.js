@@ -74,7 +74,7 @@ angular.module('starter.controllers', [])
                             console.log("eee");
                             $rootScope.id = results.id;
                             $rootScope.$apply(function(){
-                                $location.path("/app/question");
+                                $location.path("/app/mainmenu");
                             });
                         }
                     })
@@ -264,7 +264,7 @@ angular.module('starter.controllers', [])
                                 console.log("hehehe");
 //                                $rootScope.$apply(function(){
                                 $timeout(function() {
-                                    $location.path("/app/results");
+                                    $location.path("/app/demographics");
 
                                 }, 100);
 //                                });
@@ -295,34 +295,58 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('DemographicsCtrl', function($scope, $rootScope, $location){
+    .controller('DemographicsCtrl', function($scope, $rootScope, $location, $timeout){
         Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
+//        $scope.voter;
+        $scope.sendVoterData = function(voterData){
+            var Voters = Parse.Object.extend("Voters");
+            var voter = new Voters();
+            console.log($rootScope.id);
+            var userId = $rootScope.id;
+            voter.id = userId;
+            voter.set({
+                data_gender: voterData.data_gender,
+                data_age: voterData.data_age,
+                data_education: voterData.data_education,
+                data_politicalView: voterData.data_politicalView
+            });
+            voter.save(null,{
+                success: function()
+            {
+                $timeout(function() {
+                    $location.path("/app/results");
+                }, 100);
+            }});
 
-        var Voters = Parse.Object.extend("Voters");
-        var Responses = Parse.Object.extend("Responses");
-
-        var voter = new Voters();
-        voter.set("postal_code", "L2B3V3");
-        voter.set("data_age", 31222);
-
-
-        var response = new Responses();
-        response.set("question_id", "rsPzi4C3en");
-        response.set("answer_id", "urz2Y2d924");
-        response.set("relevance", "322");
-        response.set("parent", voter);
-
-        response.save(null, {
-            success: function (results) {
-
-                //Store the id of the user
-                $rootScope.id = results.attributes.parent.id;
-                $rootScope.$apply(function(){
-                    $location.path('/app/question');
-                });
-
-            }
-        });
+//            console.log(voter);
+        };
+//        var Voters = Parse.Object.extend("Voters");
+//        var Responses = Parse.Object.extend("Responses");
+//
+//        var voter = new Voters();
+//
+//
+//        voter.set("postal_code", "L2B3V3");
+//        voter.set("data_age", 31222);
+//
+//
+//        var response = new Responses();
+//        response.set("question_id", "rsPzi4C3en");
+//        response.set("answer_id", "urz2Y2d924");
+//        response.set("relevance", "322");
+//        response.set("parent", voter);
+//
+//        response.save(null, {
+//            success: function (results) {
+//
+//                //Store the id of the user
+//                $rootScope.id = results.attributes.parent.id;
+//                $rootScope.$apply(function(){
+//                    $location.path('/app/question');
+//                });
+//
+//            }
+//        });
 
     })
 
