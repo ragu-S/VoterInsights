@@ -118,6 +118,9 @@ angular.module('starter.controllers', [])
     })
 
     .controller('QuestionsCtrl', function($scope, $location, $rootScope, $timeout, $ionicScrollDelegate){
+        if(!$rootScope.id){
+            $location.path('/app/postalcode');
+        }
         $scope.answers = [];
         Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
 //$scope.relnumber;
