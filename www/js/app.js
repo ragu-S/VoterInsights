@@ -86,6 +86,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     }
                 }
             })
+            .state('app.ppDonate', {
+                url: "/ppDonate",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/ppDonate.html"
+                    }
+                }
+            })
             .state('app.single', {
                 url: "/postalcode",
                 views: {
