@@ -1,52 +1,21 @@
 <ion-view title="Question 1 of 20">
   <ion-content class="has-header">
-    <h1 id="question"><i class="ion-paper-airplane"></i> The Toronto Airport Expansion</h1>
+    <h1 id="question"><i class="ion-paper-airplane"></i>{{questions}}</h1>
 	<div class="list">
-		<label class="item item-radio">
-			<input type="radio" name="answer">
-			<div class="item-content">Increase</div>
+		<label class="item item-radio" ng-repeat="answer in answers">
+			<input ng-click="setAnswer(answer.id)" type="radio" name="answer">
+			<div class="item-content">{{answer.text}}</div>
 			<i class="radio-icon ion-checkmark"></i>
 		</label>
-		<label class="item item-radio">
-			<input type="radio" name="answer">
-			<div class="item-content">Decrease</div>
-			<i class="radio-icon ion-checkmark"></i>
-		</label>
-		<label class="item item-radio">
-			<input type="radio" name="answer">
-			<div class="item-content">No Change</div>
-			<i class="radio-icon ion-checkmark"></i>
-		</label>
-
 
   <div class="item item-divider">and this is...</div>
-  <label class="item item-radio">
-    <input type="radio" name="relevance">
-    <div class="item-content">Irrelevant to me</div>
-    <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="relevance">
-    <div class="item-content">A little important</div>
-    <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="relevance">
-    <div class="item-content">Somewhat important</div>
-    <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="relevance">
-    <div class="item-content">Very important</div>
-    <i class="radio-icon ion-checkmark"></i>
-  </label>
-  <label class="item item-radio">
-    <input type="radio" name="relevance">
-    <div class="item-content">Mandatory</div>
+  <label class="item item-radio" ng-repeat="relevance in relevances">
+    <input ng-click="setRel(relevance.attributes.ID)" type="radio" name="relevance">
+    <div class="item-content">{{relevance.attributes.Text}}</div>
     <i class="radio-icon ion-checkmark"></i>
   </label>
 </div>
-<button class="button icon-right ion-chevron-right button-full button-positive">
+<button class="button icon-right ion-chevron-right button-full button-positive" ng-click="registerAnswer()">
 		  Next
 		</button>
   </ion-content>
