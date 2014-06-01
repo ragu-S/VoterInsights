@@ -38,18 +38,46 @@ angular.module('starter.controllers', [])
     })
     .controller('MainMenuCtrl', function($scope, $stateParams) {
     })
-    .controller('PostalCodeCtrl', function($scope, $rootScope, $http) {
+    .controller('ResultsCtrl', function($scope, $stateParams) {
+    })
+    .controller('PostalCodeCtrl', function($scope, $rootScope, $location, $http) {
+        Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
+
+        $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
         $scope.sendPostal = function(pcode) {
+
+//            voter.set("data_age", 31222);
+
+
+
+
+            $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+
+            var dataa = "pcode="+pcode;
             console.log("ee", pcode);
             $http({
                 url: '/testing.php',
                 method: "POST",
-                data: { 'pcode' : pcode }
+                data: dataa
             })
                 .then(function(response) {
                     // success
                     console.log(response.data);
+                    var Voters = Parse.Object.extend("Voters");
+
+                    var voter = new Voters();
+                    voter.set("postal_code", pcode);
+                    voter.set("district_name", response.data);
+                    voter.save({
+                        success:function(results){
+                            console.log("eee");
+                            $rootScope.id = results.id;
+                            $rootScope.$apply(function(){
+                                $location.path("/app/question");
+                            });
+                        }
+                    })
                 },
                 function(response) { // optional
                     // failed
@@ -89,7 +117,7 @@ angular.module('starter.controllers', [])
 
     })
 
-    .controller('QuestionsCtrl', function($scope, $location, $rootScope){
+    .controller('QuestionsCtrl', function($scope, $location, $rootScope, $timeout, $ionicScrollDelegate){
         $scope.answers = [];
         Parse.initialize("zBM5YlWVFLzniWJu0R2d3lCiIVlSSBHSzglEMPoT", "aLchgyAqmuKVvHQdBXdiFFfKqP06eBIhJgaSGJEU");
 //$scope.relnumber;
@@ -108,11 +136,12 @@ angular.module('starter.controllers', [])
 
         var Questions = Parse.Object.extend("Questions");
         var query = new Parse.Query(Questions);
-        var counter = 0;
+
+        $scope.counter = 0;
         query.limit(1);
         query.find({
             success:function(results){
-                $scope.questions = results[0].attributes.question_txt;
+                $scope.questions = results[0].attributes;
                 $scope.question_id = results[0].id;
                 console.log($scope.questions);
                 $scope.$apply();
@@ -150,10 +179,12 @@ angular.module('starter.controllers', [])
 
         };
         $scope.registerAnswer = function(){
+            $ionicScrollDelegate.scrollTop();
+
 //        $location.path('/app/candidate');
 //            $scope.$apply();
-            counter++;
-            console.log(counter, "counter", $scope.relnumber);
+            $scope.counter++;
+            console.log($scope.counter, "counter", $scope.relnumber);
 
 
             var userId = $rootScope.id;
@@ -193,12 +224,12 @@ angular.module('starter.controllers', [])
                     var query = new Parse.Query(Questions);
 //        var counter = 0;
 
-                    query.skip(counter);
+                    query.skip($scope.counter);
                     query.limit(1);
                     query.find({
                         success:function(results){
                             if(results.length > 0){
-                                $scope.questions = results[0].attributes.question_txt;
+                                $scope.questions = results[0].attributes;
                                 $scope.question_id = results[0].id;
 
                                 console.log($scope.questions);
@@ -228,6 +259,12 @@ angular.module('starter.controllers', [])
                                 console.log(results);
                             } else {
                                 console.log("hehehe");
+//                                $rootScope.$apply(function(){
+                                $timeout(function() {
+                                    $location.path("/app/results");
+
+                                }, 100);
+//                                });
                             }
 
 

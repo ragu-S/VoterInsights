@@ -77,7 +77,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                     }
                 }
             })
-
+            .state('app.results', {
+                url: "/results",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/results.html",
+                        controller: 'ResultsCtrl'
+                    }
+                }
+            })
             .state('app.single', {
                 url: "/postalcode",
                 views: {

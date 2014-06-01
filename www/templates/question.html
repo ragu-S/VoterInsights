@@ -1,6 +1,6 @@
-<ion-view title="Question 1 of 20">
+<ion-view title="Question {{counter+1}} of 6">
   <ion-content class="has-header">
-    <h1 id="question"><i class="ion-paper-airplane"></i>{{questions}}</h1>
+    <h1 id="question"><i class="{{questions.icon}}"></i>{{questions.question_txt}}</h1>
 	<div class="list">
 		<label class="item item-radio" ng-repeat="answer in answers">
 			<input ng-click="setAnswer(answer.id)" type="radio" name="answer">
