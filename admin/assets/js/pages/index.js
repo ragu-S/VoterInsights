@@ -1003,10 +1003,10 @@ $(document).ready(function(){
 	Morris.Donut({
 		element: 'hero-donut',
 		data: [
-			{label: 'Chrome', value: 35 },
-	      	{label: 'Firefox', value: 20 },
-	      	{label: 'Safari', value: 15 },
-	      	{label: 'IE', value: 10 },
+			{label: 'Single', value: 35 },
+	      	{label: 'Married', value: 20 },
+	      	{label: 'Divorced', value: 15 },
+	      	{label: 'Commonlaw', value: 10 },
 			{label: 'Other', value: 20 }
 	    ],
 		colors: ["#36A9E1", "#bdea74", "#67c2ef", "#fabb3d", "#ff5454"],
